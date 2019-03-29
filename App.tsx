@@ -1,15 +1,14 @@
 import * as React from "react";
-import ContactList from "./components/contacts/contactlist/ContactList";
+import ContactList from "./src/screens/contacts/Contact";
 import {
   createBottomTabNavigator,
   createAppContainer,
   createStackNavigator
 } from "react-navigation";
-import ToDo from "./components/todos/ToDo";
-import { Ionicons } from "@expo/vector-icons";
-import ContactDetail from "./components/contacts/contactlist/ContactDetail";
-import { Button, TouchableHighlight } from "react-native";
-import ContactCreate from "./components/contacts/contactcreate/ContactCreate";
+import ToDo from "./src/screens/todos/ToDo";
+import ContactDetail from "./src/screens/contacts/screens/ContactDetail/ContactDetail";
+import ContactCreate from "./src/screens/contacts/screens/ContactCreate/ContactCreate";
+const { Ionicons } = require("@expo/vector-icons");
 
 const contactStackNavigator = createStackNavigator(
   {

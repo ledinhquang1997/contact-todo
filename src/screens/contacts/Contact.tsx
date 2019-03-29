@@ -5,11 +5,11 @@ import {
   FlatList,
   TouchableOpacity
 } from "react-native";
-import ListContactItem from "./ContactListItem";
+import ListContactItem from "./components/ContactItem";
 const  { Ionicons } = require("@expo/vector-icons");
-import MockData from "../../../MockData.json";
-import Separator from "../../common/Separator";
-import { IData } from '../../../service/typing/Data';
+import MockData from "../../MockData.json";
+import Separator from "./components/Separator";
+import { IData } from './services/typing/Data';
 
 interface IProps {
   navigation: any;
@@ -19,7 +19,7 @@ interface IState {
   isLoading: boolean;
   data: IData[];
 }
-export default class ContactList extends Component<IProps, IState> {
+export default class Contact extends Component<IProps, IState> {
   static navigationOptions = ({ navigation }: { navigation: any }) => {
     return {
       title: "Contact",

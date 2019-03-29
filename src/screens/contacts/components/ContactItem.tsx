@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import Swipeout, { SwipeoutButtonProperties } from "react-native-swipeout";
 import { View, Image, Text, Alert, TouchableOpacity } from "react-native";
-const { Ionicons } = require("@expo/vector-icons");
 import { withNavigation, NavigationScreenProps, NavigationScreenProp, NavigationRoute } from "react-navigation";
-import { IData } from '../../../service/typing/Data';
+const { Ionicons } = require("@expo/vector-icons");
+import { IData } from '../services/typing/Data';
+
 interface IState {
   data: IData;
 }
@@ -41,7 +42,7 @@ class ContactListItem extends Component<IProps, IState> {
 
   render() {
     const { item, handleDeleteItem, navigation } = this.props;
-    const swipeoutBtns: SwipeoutButtonProperties[] =  [
+    const swipeoutBtns: SwipeoutButtonProperties[] = [
       {
         text: (
           <Ionicons
@@ -56,7 +57,7 @@ class ContactListItem extends Component<IProps, IState> {
           Alert.alert("Alert", "Are you sure to delete?", [
             {
               text: "No",
-              onPress: () => {},
+              onPress: () => { },
               style: "cancel"
             },
             {

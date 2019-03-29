@@ -2,19 +2,8 @@ import React, { Component } from "react";
 import { View, Text, Image, TouchableOpacity } from "react-native";
 const { Ionicons } = require("@expo/vector-icons");
 import { NavigationScreenProps } from 'react-navigation';
-
-interface IData {
-  avatar: string;
-  first_name: string;
-  last_name: string;
-  id: number;
-  phone_number: string;
-  email: string;
-  company: string;
-  dob: string;
-  address: string;
-}
-
+import { IData } from '../../services/typing/Data';
+import ContactDetaiItem from './components/ContactDetaiItem';
 interface IScreensProps {
   contact: IData;
 }
@@ -44,23 +33,6 @@ export default class ContactDetail extends Component<IProps, Istate> {
       isLoading: true
     };
   }
-
-  renderInformation = (title: string, info: string, icon: string) => (
-
-    <View
-      style={{
-        width: "70%",
-        height: 40,
-        flexDirection: "row",
-        justifyContent: "flex-start"
-      }}
-    >
-      <Ionicons name={icon} size={30} color="tomato" />
-      <Text style={{ fontSize: 20, marginLeft: 10 }}>
-        {title}: {info}
-      </Text>
-    </View>
-  );
 
   render() {
     const { navigation } = this.props;
@@ -104,10 +76,10 @@ export default class ContactDetail extends Component<IProps, Istate> {
         <Text style={{ fontSize: 30, fontWeight: "100", marginBottom: 20 }}>
           {contact.company}
         </Text>
-        {this.renderInformation("Email", contact.email, "ios-mail")}
-        {this.renderInformation("Phone", contact.phone_number, "md-phone-portrait")}
-        {this.renderInformation("Birthday", dob.toDateString(), "md-calendar")}
-        {this.renderInformation("Address", contact.address, "md-book")}
+        <ContactDetaiItem title="Email" info={contact.email} icon="ios-mail"/>
+        <ContactDetaiItem title="Phone" info={contact.email} icon="md-phone-portrait"/>
+        <ContactDetaiItem title="Birthday" info={contact.email} icon="md-calendar"/>
+        <ContactDetaiItem title="Address" info={contact.email} icon="md-book"/>
       </View>
     );
   }
