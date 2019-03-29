@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import { View, Text, Image, TouchableOpacity } from "react-native";
-import MockData from "../../../MockData.json";
-import Separator from "../../common/Separator";
-import { Ionicons } from "@expo/vector-icons";
+const { Ionicons } = require("@expo/vector-icons");
+import { NavigationScreenProps } from 'react-navigation';
 
 interface IData {
   avatar: string;
@@ -11,9 +10,16 @@ interface IData {
   id: number;
   phone_number: string;
   email: string;
+  company: string;
+  dob: string;
+  address: string;
 }
-interface IProps {
-  navigation: any;
+
+interface IScreensProps {
+  contact: IData;
+}
+
+interface IProps extends NavigationScreenProps<IScreensProps> {
 }
 interface Istate {
   isLoading: boolean;
@@ -40,6 +46,7 @@ export default class ContactDetail extends Component<IProps, Istate> {
   }
 
   renderInformation = (title: string, info: string, icon: string) => (
+
     <View
       style={{
         width: "70%",
@@ -63,10 +70,12 @@ export default class ContactDetail extends Component<IProps, Istate> {
       last_name: "",
       id: 0,
       phone_number: "",
-      email: ""
+      email: "",
+      company: "",
+      dob: "",
+      address: ""
     });
-    console.log(contact);
-
+    const dob = new Date(contact.dob);
     return (
       <View
         style={{
@@ -96,12 +105,8 @@ export default class ContactDetail extends Component<IProps, Istate> {
           {contact.company}
         </Text>
         {this.renderInformation("Email", contact.email, "ios-mail")}
-        {this.renderInformation(
-          "Phone",
-          contact.phone_number,
-          "md-phone-portrait"
-        )}
-        {this.renderInformation("Birthday", contact.dob, "md-calendar")}
+        {this.renderInformation("Phone", contact.phone_number, "md-phone-portrait")}
+        {this.renderInformation("Birthday", dob.toDateString(), "md-calendar")}
         {this.renderInformation("Address", contact.address, "md-book")}
       </View>
     );

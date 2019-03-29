@@ -3,6 +3,8 @@
 .DS_Store
 
 # Xcode
+.expo/
+.vscode/
 #
 build/
 *.pbxuser

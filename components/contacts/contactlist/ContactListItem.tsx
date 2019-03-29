@@ -1,23 +1,21 @@
 import React, { Component } from "react";
-import Swipeout from "react-native-swipeout";
+import Swipeout, { SwipeoutButtonProperties } from "react-native-swipeout";
 import { View, Image, Text, Alert, TouchableOpacity } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
-import { withNavigation } from "react-navigation";
-interface IData {
-  avatar: string;
-  first_name: string;
-  last_name: string;
-  id: number;
-  phone_number: string;
-  email: string;
-}
+const { Ionicons } = require("@expo/vector-icons");
+import { withNavigation, NavigationScreenProps, NavigationScreenProp, NavigationRoute } from "react-navigation";
+import { IData } from '../../../service/typing/Data';
 interface IState {
   data: IData;
 }
-interface IProps {
+
+interface ContactListItemProps {
+  name: string
+}
+
+interface IProps extends NavigationScreenProps<ContactListItemProps> {
   item: IData;
   handleDeleteItem: Function;
-  navigation: any;
+  navigation: NavigationScreenProp<NavigationRoute<any>, any>
 }
 class ContactListItem extends Component<IProps, IState> {
   constructor(props: IProps) {
@@ -29,7 +27,10 @@ class ContactListItem extends Component<IProps, IState> {
         last_name: "le",
         id: 1,
         phone_number: "",
-        email: ""
+        email: "",
+        company: "",
+        dob: "",
+        address: ""
       }
     };
   }
@@ -40,7 +41,7 @@ class ContactListItem extends Component<IProps, IState> {
 
   render() {
     const { item, handleDeleteItem, navigation } = this.props;
-    const swipeoutBtns = [
+    const swipeoutBtns: SwipeoutButtonProperties[] =  [
       {
         text: (
           <Ionicons
@@ -55,9 +56,7 @@ class ContactListItem extends Component<IProps, IState> {
           Alert.alert("Alert", "Are you sure to delete?", [
             {
               text: "No",
-              onPress: () => {
-                console.log("FUck");
-              },
+              onPress: () => {},
               style: "cancel"
             },
             {

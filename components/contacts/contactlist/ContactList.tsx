@@ -6,17 +6,11 @@ import {
   TouchableOpacity
 } from "react-native";
 import ListContactItem from "./ContactListItem";
-import { Ionicons } from "@expo/vector-icons";
+const  { Ionicons } = require("@expo/vector-icons");
 import MockData from "../../../MockData.json";
 import Separator from "../../common/Separator";
-interface IData {
-  avatar: string;
-  first_name: string;
-  last_name: string;
-  id: number;
-  phone_number: string;
-  email: string;
-}
+import { IData } from '../../../service/typing/Data';
+
 interface IProps {
   navigation: any;
 }
