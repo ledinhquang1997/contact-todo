@@ -3,11 +3,19 @@ import ContactList from "./src/screens/contacts/Contact";
 import {
   createBottomTabNavigator,
   createAppContainer,
-  createStackNavigator
+  createStackNavigator,
+  createMaterialTopTabNavigator
 } from "react-navigation";
 import ToDo from "./src/screens/todos/ToDo";
 import ContactDetail from "./src/screens/contacts/screens/ContactDetail/ContactDetail";
 import ContactCreate from "./src/screens/contacts/screens/ContactCreate/ContactCreate";
+import Active from "./src/screens/todos/screens/Active/Active";
+import Completed from "./src/screens/todos/screens/Completed/Completed";
+import All from "./src/screens/todos/screens/All/All";
+import store from "./store";
+const { Provider } = require("react-redux");
+
+const Expo = require("expo");
 const { Ionicons } = require("@expo/vector-icons");
 
 const contactStackNavigator = createStackNavigator(
@@ -26,11 +34,24 @@ const contactStackNavigator = createStackNavigator(
     initialRouteName: "ContactList"
   }
 );
-
+const TodoTabNavigator = createMaterialTopTabNavigator(
+  {
+    All: All,
+    Active: Active,
+    Completed: Completed
+  },
+  {
+    tabBarOptions: {
+      labelStyle: { color: "#000" },
+      tabStyle: {},
+      style: { backgroundColor: "#fff", marginTop: 20 }
+    }
+  }
+);
 const TabNavigator = createBottomTabNavigator(
   {
     Contact: contactStackNavigator,
-    ToDo: ToDo
+    ToDo: TodoTabNavigator
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
@@ -56,7 +77,21 @@ const TabNavigator = createBottomTabNavigator(
 
 const RootNavigator = createAppContainer(TabNavigator);
 export default class App extends React.Component {
+  componentDidMount() {
+    this.loadFonts();
+  }
+  async loadFonts() {
+    await Expo.Font.loadAsync({
+      Roboto: require("native-base/Fonts/Roboto.ttf"),
+      Roboto_medium: require("native-base/Fonts/Roboto_medium.ttf"),
+      Ionicons: require("@expo/vector-icons/fonts/Ionicons.ttf")
+    });
+  }
   render() {
-    return <RootNavigator />;
+    return (
+      <Provider store={store}>
+        <RootNavigator />
+      </Provider>
+    );
   }
 }
