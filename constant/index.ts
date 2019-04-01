@@ -9,3 +9,9 @@ export const UPDATE_TODOS_FAIL = "UPDATE_TODOS_FAIL";
 export const ADD_TODOS = "ADD_TODOS";
 export const ADD_TODOS_SUCCESS = "ADD_TODOS_SUCCESS";
 export const ADD_TODOS_FAIL = "ADD_TODOS_FAIL";
+
+export const DELETE_TODO = "DELETE_TODO";
+export const DELETE_TODO_SUCCESS = "DELETE_TODO_SUCCESS";
+export const DELETE_TODO_FAIL = "DELETE_TODO_FAIL";
+
+export const URL = "https://ghostbb-testapi.azurewebsites.net/api/task";

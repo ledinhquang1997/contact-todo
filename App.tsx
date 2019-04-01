@@ -12,7 +12,7 @@ import ContactCreate from "./src/screens/contacts/screens/ContactCreate/ContactC
 import Active from "./src/screens/todos/screens/Active/Active";
 import Completed from "./src/screens/todos/screens/Completed/Completed";
 import All from "./src/screens/todos/screens/All/All";
-import store from "./store";
+import store from "./store/index";
 const { Provider } = require("react-redux");
 
 const Expo = require("expo");

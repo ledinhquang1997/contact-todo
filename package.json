@@ -48,6 +48,7 @@
     }
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "expo": "^27.0.1",
     "firebase": "^5.9.2",
     "lodash": "^4.17.11",
@@ -63,6 +64,7 @@
     "redux-actions": "^2.6.5",
     "redux-logger": "^3.0.6",
     "redux-saga": "^1.0.2",
-    "uniqid": "^5.0.3"
+    "uniqid": "^5.0.3",
+    "uuid": "^3.3.2"
   }
 }

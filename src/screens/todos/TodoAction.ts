@@ -8,8 +8,11 @@ import {
   UPDATE_TODOS_FAIL,
   ADD_TODOS,
   ADD_TODOS_SUCCESS,
-  ADD_TODOS_FAIL
-} from "../../../constant";
+  ADD_TODOS_FAIL,
+  DELETE_TODO,
+  DELETE_TODO_FAIL,
+  DELETE_TODO_SUCCESS
+} from "../../../constant/index";
 import { ITodo } from "./service/typing/ITodo";
 
 export function getTodos(): any {
@@ -53,4 +56,16 @@ export function addTodoSuccess() {
 
 export function addTodoFail() {
   return { type: ADD_TODOS_FAIL };
+}
+
+export function deleteTodo(id: string): any {
+  return { type: DELETE_TODO, payload: { id: id } };
+}
+
+export function deleteTodoSuccess(): any {
+  return { type: DELETE_TODO_SUCCESS };
+}
+
+export function deleteTodoFail(): any {
+  return { type: DELETE_TODO_FAIL };
 }

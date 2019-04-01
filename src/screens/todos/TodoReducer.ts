@@ -8,29 +8,16 @@ const initialTodoAllReducer = {
   isLoading: false,
   todos: [
     {
-      id: "ksdhifuh",
-      task: "Fix bug at 5",
-      status: 1
+      id: "ee3a530e-2f89-406f-aab2-00f3f760603b",
+      name: "Task 1",
+      isDone: false,
+      description: null
     },
     {
-      id: "fdhdsdfsdfg",
-      task: "Go to school at 4",
-      status: 0
-    },
-    {
-      id: "ksdh46",
-      task: "Dating with gf",
-      status: 1
-    },
-    {
-      id: "vzxdsv",
-      task: "Do yoga",
-      status: 0
-    },
-    {
-      id: "ksd124wehifuh",
-      task: "Fix bug",
-      status: 1
+      id: "b9b40a0d-9913-4689-a34f-2e9a2697541e",
+      name: "Task 312",
+      isDone: false,
+      description: "fssd sad sfd sdfg "
     }
   ],
   err: false
