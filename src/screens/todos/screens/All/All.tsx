@@ -14,27 +14,33 @@ interface IProps {
 }
 interface IState {
   todos: any;
+  todoInput: string;
 }
 class All extends Component<IProps, IState> {
   constructor(props: IProps) {
     super(props);
     this.state = {
-      todos: []
+      todos: [],
+      todoInput: ""
     };
   }
 
   componentDidMount = () => {
-    this.props.getTodos();
+    // this.props.getTodos();
   };
 
   renderTodoItem = (todo: ITodo) => {
     return <TodoItem key={todo.id} todoItem={todo} />;
   };
+
+  handleTextChange = (text: string) => {
+    this.setState({ todoInput: text });
+  };
   render() {
     const { todos }: { todos: ITodo[] } = this.props.todosData;
     const { isLoading } = this.props.todosData;
+    console.log(this.state.todoInput);
 
-    console.log(this.props.todosData.todos);
     return (
       <View
         style={{
@@ -47,6 +53,7 @@ class All extends Component<IProps, IState> {
           <Input
             placeholder="What needs to be done?"
             placeholderLabel={{ textAlign: "center" }}
+            onChangeText={(text: string) => this.handleTextChange(text)}
             style={{
               flex: 0.9,
               fontFamily: "Roboto",
