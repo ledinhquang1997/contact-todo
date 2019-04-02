@@ -7,7 +7,7 @@ import {
 } from "react-navigation";
 import ContactDetail from "./src/screens/contacts/screens/ContactDetail/ContactDetail";
 import ContactCreate from "./src/screens/contacts/screens/ContactCreate/ContactCreate";
-import All from "./src/screens/todos/Todo";
+import Todo from "./src/screens/todos/Todo";
 const { Ionicons } = require("@expo/vector-icons");
 
 const contactStackNavigator = createStackNavigator(
@@ -30,7 +30,7 @@ const contactStackNavigator = createStackNavigator(
   const TabNavigator = createBottomTabNavigator(
     {
       Contact: contactStackNavigator,
-      ToDo: All
+      ToDo: Todo
     },
     {
       defaultNavigationOptions: ({ navigation }) => ({
