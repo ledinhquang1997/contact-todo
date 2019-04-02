@@ -1,71 +1,63 @@
 const { createAction } = require("redux-actions");
-import {
-  GET_TODOS,
-  GET_TODOS_SUCCESS,
-  GET_TODOS_FAIL,
-  UPDATE_TODOS,
-  UPDATE_TODOS_SUCCESS,
-  UPDATE_TODOS_FAIL,
-  ADD_TODOS,
-  ADD_TODOS_SUCCESS,
-  ADD_TODOS_FAIL,
-  DELETE_TODO,
-  DELETE_TODO_FAIL,
-  DELETE_TODO_SUCCESS
-} from "../../../constant/index";
-import { ITodo } from "./service/typing/ITodo";
+import { TodoAction } from "../../../constant/index";
+import { ITodo } from "./service/typing/todo";
+import { IAction } from './service/typing/state';
 
-export function getTodos(): any {
-  return { type: GET_TODOS };
+export function getTodos(): IAction {
+  return { type: TodoAction.GET_TODOS };
 }
 
 export function getTodosSuccess(data: ITodo[]) {
   return {
-    type: GET_TODOS_SUCCESS,
+    type: TodoAction.GET_TODOS_SUCCESS,
     payload: data
   };
 }
 
-export function getTodosFail() {
-  return { type: GET_TODOS_FAIL };
+export function getTodosFail(err: any) {
+  return { type: TodoAction.GET_TODOS_FAIL, payload: err };
 }
 
-export function updateTodo(todo: ITodo): any {
-  return { type: UPDATE_TODOS, payload: todo };
+export function updateTodo(todo: ITodo): IAction {
+  return { type: TodoAction.UPDATE_TODOS, payload: todo };
 }
 
 export function updateTodoSuccess() {
   return {
-    type: UPDATE_TODOS_SUCCESS
+    type: TodoAction.UPDATE_TODOS_SUCCESS
   };
 }
 
-export function updateTodoFail() {
-  return { type: UPDATE_TODOS_FAIL };
+export function updateTodoFail(err:string) {
+  return { type: TodoAction.UPDATE_TODOS_FAIL, payload: err };
 }
 
-export function addTodo(todo: ITodo): any {
-  return { type: ADD_TODOS, payload: todo };
+export function addTodo(todo: ITodo): IAction {
+  return { type: TodoAction.ADD_TODOS, payload: todo };
 }
 
 export function addTodoSuccess() {
   return {
-    type: ADD_TODOS_SUCCESS
+    type: TodoAction.ADD_TODOS_SUCCESS
   };
 }
 
-export function addTodoFail() {
-  return { type: ADD_TODOS_FAIL };
+export function addTodoFail(err:string) {
+  return { type: TodoAction.ADD_TODOS_FAIL, payload: err};
 }
 
-export function deleteTodo(id: string): any {
-  return { type: DELETE_TODO, payload: { id: id } };
+export function deleteTodo(id: string): IAction {
+  return { type: TodoAction.DELETE_TODO, payload: { id: id } };
 }
 
-export function deleteTodoSuccess(): any {
-  return { type: DELETE_TODO_SUCCESS };
+export function deleteTodoSuccess(): IAction {
+  return { type: TodoAction.DELETE_TODO_SUCCESS };
 }
 
-export function deleteTodoFail(): any {
-  return { type: DELETE_TODO_FAIL };
+export function deleteTodoFail(err:string): IAction {
+  return { type: TodoAction.DELETE_TODO_FAIL, payload: err};
+}
+
+export function changeFilter(filter: string): IAction {
+  return { type: TodoAction.CHANGE_FILTER, payload: { filter: filter } };
 }

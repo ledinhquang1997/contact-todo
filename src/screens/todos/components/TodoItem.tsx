@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { View, Text, TouchableOpacity, TouchableWithoutFeedback, TouchableHighlight, AlertIOS } from "react-native";
-import { ITodo } from "../service/typing/ITodo";
+import { ITodo } from "../service/typing/todo";
 import { updateTodo, deleteTodo } from "../TodoAction";
+import { IToDoState } from '../service/typing/state';
 const { connect } = require("react-redux");
 const { CheckBox } = require("native-base");
 const { Ionicons } = require("@expo/vector-icons");
@@ -98,7 +99,7 @@ class TodoItem extends Component<IProps, IState> {
   }
 }
 
-const mapStateToProps = (state: any) => ({});
+const mapStateToProps = (state: IToDoState) => ({});
 
 const mapDispatchToProps = {
   updateTodo, deleteTodo

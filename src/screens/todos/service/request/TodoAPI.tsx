@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { URL } from '../../../../../constant';
-import { ITodo } from '../typing/ITodo';
+import { ITodo } from '../typing/todo';
 
 export function fetchTodos() {
   return new Promise((resolve, reject) => {
@@ -42,4 +42,15 @@ export function deleteTodo(id: string) {
     }).then(r => { resolve(r.data) },
       r => { reject(r.response.data.message) });
   })
+}
+
+class todoService {
+  async addTodo(request: ITodo) : Promise<ITodo> {
+    const res = await axios({
+      url: URL,
+      method: "POST",
+      data: request
+    });
+    return res.data;
+  }
 }

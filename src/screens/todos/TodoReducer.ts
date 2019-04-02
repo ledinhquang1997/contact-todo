@@ -1,8 +1,5 @@
-import {
-  GET_TODOS,
-  GET_TODOS_SUCCESS,
-  GET_TODOS_FAIL
-} from "../../../constant";
+import { TodoAction } from "../../../constant";
+import { IAction } from './service/typing/state';
 
 const initialTodoAllReducer = {
   isLoading: false,
@@ -20,27 +17,52 @@ const initialTodoAllReducer = {
       description: "fssd sad sfd sdfg "
     }
   ],
-  err: false
+  err: false,
+  errMessage: "",
+  filter: TodoAction.ALL,
 };
-export const todosReducer = (state = initialTodoAllReducer, action: any) => {
+export const todosReducer = (state = initialTodoAllReducer, action: IAction) => {
   switch (action.type) {
-    case GET_TODOS:
+    case TodoAction.GET_TODOS:
       return {
         ...state,
         isLoading: true
       };
-    case GET_TODOS_SUCCESS:
+    case TodoAction.GET_TODOS_SUCCESS:
       return {
         isLoading: false,
         todos: action.payload
       };
-    case GET_TODOS_FAIL:
+    case TodoAction.GET_TODOS_FAIL:
       return {
         ...state,
         isLoading: false,
         todos: [],
         err: true
       };
+    case TodoAction.CHANGE_FILTER:
+      return {
+        ...state,
+        filter: action.payload.filter
+      }
+    case TodoAction.UPDATE_TODOS_FAIL:
+      return {
+        ...state,
+        err:true,
+        errMessage:action.payload
+      }
+      case TodoAction.ADD_TODOS_FAIL:
+      return {
+        ...state,
+        err:true,
+        errMessage:action.payload
+      }
+      case TodoAction.DELETE_TODO_FAIL:
+      return {
+        ...state,
+        err:true,
+        errMessage:action.payload
+      }
     default:
       return state;
   }
